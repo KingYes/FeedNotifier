@@ -5,7 +5,10 @@ import popups
 import view
 import updater
 import util
-import winsound
+import sys
+# TODO: find any way to play sound in linux.
+if 'linux2' != sys.platform:
+    import winsound
 import socket
 from settings import settings
 
@@ -108,6 +111,8 @@ class Controller(object):
         if play_sound:
             self.play_sound()
     def play_sound(self):
+        if 'linux2' == sys.platform:
+            return
         if settings.PLAY_SOUND:
             path = settings.SOUND_PATH
             flags = winsound.SND_FILENAME | winsound.SND_ASYNC

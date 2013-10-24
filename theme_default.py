@@ -1,3 +1,4 @@
+import sys
 import wx
 import controls
 import popups
@@ -103,7 +104,9 @@ class Frame(wx.Frame):
         body = self.create_body(parent)
         footer = self.create_footer(parent)
         pen = wx.Pen(wx.BLACK, style=wx.USER_DASH)
-        pen.SetDashes([0, 2])
+        # Bug with linux platform.
+        if 'linux2' != sys.platform:
+            pen.SetDashes([0, 2])
         line1 = controls.Line(parent, pen)
         line2 = controls.Line(parent, pen)
         sizer = wx.BoxSizer(wx.VERTICAL)
