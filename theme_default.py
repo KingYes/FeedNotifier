@@ -20,6 +20,7 @@ class Frame(wx.Frame):
         container = self.create_container(self)
         container.Bind(wx.EVT_MOUSEWHEEL, self.on_mousewheel)
         container.Bind(wx.EVT_KEY_DOWN, self.on_key_down)
+        container.SetFocus()
         self.container = container
         self.Fit()
     def post_link(self, link):
