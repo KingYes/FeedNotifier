@@ -51,6 +51,12 @@ if sys.platform == 'linux2':
                                                        ctypes.c_void_p,
                                                        ctypes.POINTER(XScreenSaverInfo)]
 
+            # gtk_init() must have been called for this to work
+            import gtk
+            #gtk  # pyflakes
+
+            # has_extension = XScreenSaverQueryExtension(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+            #                                            &event_base, &error_base);
             event_base = ctypes.c_int()
             error_base = ctypes.c_int()
             gtk_display = self.gdk.gdk_display_get_default()
