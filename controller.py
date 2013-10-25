@@ -7,7 +7,7 @@ import updater
 import util
 import sys
 # TODO: find any way to play sound in linux.
-if 'linux2' != sys.platform:
+if sys.platform != 'linux2':
     import winsound
 import socket
 from settings import settings
@@ -111,7 +111,7 @@ class Controller(object):
         if play_sound:
             self.play_sound()
     def play_sound(self):
-        if 'linux2' == sys.platform:
+        if sys.platform == 'linux2':
             return
         if settings.PLAY_SOUND:
             path = settings.SOUND_PATH
